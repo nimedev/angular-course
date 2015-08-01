@@ -1,0 +1,21 @@
+{
+  "name": "angular-course",
+  "version": "0.0.1",
+  "authors": [
+    "nimedev <nicolasmejiaco@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.3",
+    "angular-resource": "~1.4.3",
+    "ng-currency": "~0.8.7",
+    "angular-translate": "~2.7.2"
+  }
+}

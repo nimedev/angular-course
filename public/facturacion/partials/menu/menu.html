@@ -1,0 +1,7 @@
+<!doctype html>
+<div class="container" ng-controller="CtrlMenu">
+  <div ng-repeat="item in menus">
+    <br/>
+    <a class="btn btn-primary btn-block" role="button" href="#/{{::item.url}}">{{item.label}}</a>
+  </div>
+</div>

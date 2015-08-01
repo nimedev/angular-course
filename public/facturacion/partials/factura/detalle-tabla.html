@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th>Opciones</th>
+      <th>Tipo</th>
+      <th>Cantidad</th>
+      <th>Descripción</th>
+      <th>V. Unitario</th>
+      <th>Descuento</th>
+      <th>V. total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in detalles">
+      <td>
+        <button ng-click="show(item)">Selecionar</button>
+      </td>
+      <td>{{item.miTipo.label}}
+      </td>
+      <td>{{item.cantidad}}
+      </td>
+      <td>{{item.descripcion}}
+      </td>
+      <td>{{item.vunit}}
+      </td>
+      <td>{{item.descuento}}
+      </td>
+      <td>{{item.vTotal}}</td>
+    </tr>
+  </tbody>
+</table>

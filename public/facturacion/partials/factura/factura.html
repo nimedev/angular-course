@@ -1,0 +1,62 @@
+<!doctype html>
+<div class="container" ng-controller="CtrlFactura">
+  <form name="frmFactura" role="form" novalidate>
+    <h1>Factura</h1>
+    <div class="form-group">
+      <label for="numero">Número de factura:</label>
+      <input type="number" class="form-control" id="numero" placeholder="Introduce # Factura" ng-model="factura.numeroFact" min="0" required/>
+    </div>
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input type="date" class="form-control" id="fecha" ng-model="factura.fechaFactura" />
+    </div>
+    <div class="form-group">
+      <label for="observaciones">Observasiones:</label>
+      <input type="text" class="form-control" id="observaciones" ng-model="factura.observaciones" />
+    </div>
+    <h1>Detalles</h1>
+    <div class="form-group">
+      <label for="tipo">Tipos con "label for item in values track by id":</label>
+      <select class="form-control" id="tipo" ng-model="detalle.miTipo" ng-options="tipo.descripcion for tipo in tipos track by tipo.id">
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" class="form-control" id="cantidad" name="cantidad" ng-model="detalle.cantidad" min="0" required/>
+      <span class="error" ng-show="frmFactura.cantidad.$dirty">
+        <span ng-show="frmFactura.cantidad.$error.required">
+          El campo <b>Cantidad</b> es requerido
+        </span>
+        <span ng-show="frmFactura.cantidad.$error.min">
+          El campo mínimo del campo <b>Cantidad</b> es cero
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripcion:</label>
+      <input type="text" class="form-control" id="descripcion" ng-model="detalle.descripcion" />
+    </div>
+    <div class="form-group">
+      <label for="descuento">Descuento:</label>
+      <input type="number" class="form-control" id="descuento" ng-model="detalle.descuento" min="0"/>
+    </div>
+    <div class="form-group">
+      <lable for="vunit">Valor unitario:</label>
+      <input type="text" class="form-control" id="vunit" ng-model="detalle.vunit" min="0" ng-currency/>
+    </div>
+    <br/>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+        <button class="btn btn-primary" ng-click="agregar();">Agregar</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button class="btn btn-primary" ng-click="init();">Limpiar</button>
+      </div>
+      <div class="btn-group" role="group">
+        <button class="btn btn-primary" ng-click="save();">Guardar</button>
+      </div>
+    </div>
+  </form>
+  <br/>
+  <div ng-include="'/angular-web/facturacion/partials/factura/detalle-tabla.html'"></div>
+</div>

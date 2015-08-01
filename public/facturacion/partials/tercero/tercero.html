@@ -1,0 +1,67 @@
+<!doctype html>
+<div class="container" ng-controller="CtrlTerceros">
+  <form name="frmPersona" novalidate>
+    <h1 >{{'SALUDO' | translate}} Persona</h1>
+
+    <div class="row">
+      <div class="form-group col-md-6" ng-class="{'has-warning': frmPersona.nombres.$error.required}">
+        <label class="control-label" for="nombres">Primer Nombre:</label>
+        <input name="nombres" type="text" class="form-control input-sm" id="nombres" placeholder="Primer Nombre" ng-model="persona.strNombres" required/>
+        <!-- Mensajes de error -->
+        <div class="" ng-show="!frmPersona.$pristine && frmPersona.nombres.$error.required">
+          <span class="has-error" ng-show="frmPersona.nombres.$error.required">Escriba su nombre.</span>
+        </div>
+      </div>
+      <div class="form-group  col-md-6">
+        <label class="control-label" for="segNombre">Segundo Nombre:</label>
+        <input type="text" class="form-control input-sm" id="segNombre" placeholder="Segundo nombre" ng-model="persona.segundoNombre" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-6" ng-class="{'has-warning': frmPersona.nombres.$error.required}">
+        <label class="control-label" for="apellidos">Primer Apellido:</label>
+        <input name="apellidos" type="text" class="form-control input-sm" id="apellidos" placeholder="Primer apellido" ng-model="persona.strApellidos" required/>
+        <!-- Mensajes de error -->
+        <div class="" ng-show="!frmPersona.$pristine && frmPersona.apellidos.$error.required">
+          <span class="has-error" ng-show="frmPersona.apellidos.$error.required">Escriba su apellido.</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="control-label" for="segApellido">Segundo Apellido:</label>
+        <input type="text" class="form-control input-sm" id="segApellido" placeholder="Segundo apellido" ng-model="persona.segundoApellido" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label class="control-label" for="tipo">Tipo:</label>
+        <select class="form-control input-sm" id="tipo" ng-model="persona.strTipoDocumento" ng-options="tipo.id as tipo.descripcion for tipo in tipos">
+        </select>
+      </div>
+      <div class="form-group col-md-9" ng-class="{'has-warning': frmPersona.nombres.$error.required}">
+        <label class="control-label" for="documento">Documento:</label>
+        <input name="documento" type="number" class="form-control input-sm" id="documento" placeholder="Numero de documento" ng-model="persona.nmDocumento" min="0" required/>
+        <!-- Mensajes de error -->
+        <div class="" ng-show="!frmPersona.$pristine && frmPersona.documento.$error.required">
+          <span class="has-error" ng-show="frmPersona.documento.$error.required">Digite su documento.</span>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+        <button type="submit" class="btn btn-primary btn-block" ng-click="save()" ng-disabled="!frmPersona.$valid">Guardar</button>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <button type="button" class="btn btn-primary btn-block" ng-click="init()">Limpiar</button>
+      </div>
+    </div>
+  </form>
+  <br/>
+  <div ng-include="'facturacion/partials/tercero/detalle-tercero.html'"></div>
+
+  <my-dialog titulo="'Exito'" mensaje="':D'" id="'myOk'"></my-dialog>
+  <my-dialog titulo="'Error'" mensaje="':('" id="'myError'"></my-dialog>
+</div>
